@@ -8,7 +8,8 @@ class Program
     {
         Console.OutputEncoding = System.Text.Encoding.UTF8;
         //Calc();
-        TempConverter();
+        //TempConverter();
+        GradesAverage();
     }
     /// Simple two-number calculator
     static void Calc()
@@ -41,7 +42,8 @@ class Program
                 Console.WriteLine($"Result: {result}\n");
                 break;
             case "/":
-                if (num2 == 0) {
+                if (num2 == 0)
+                {
                     Console.WriteLine("You can't divide by zero");
                     return;
                 }
@@ -86,5 +88,47 @@ class Program
                 TempConverter();
                 break;
         }
+    }
+
+    static void GradesAverage()
+    {
+        Console.WriteLine("Student's grades average");
+
+        Console.WriteLine("Enter number of grades");
+        double numOfGrades = int.Parse(Console.ReadLine());
+        double sum = 0;
+        int grade;
+
+        for (int i = 0; i < numOfGrades; i++)
+        {
+            while (true)
+            {
+                Console.WriteLine("Enter grade (1-6): ");
+                grade = int.Parse(Console.ReadLine());
+
+                if (grade < 1 || grade > 6)
+                {
+                    continue;
+                }
+                else
+                {
+                    sum += grade;
+                    break;
+                }
+            }
+        }
+
+        double average = sum / numOfGrades;
+        Console.WriteLine($"Grades average: {average}");
+
+        if (average >= 3)
+        {
+            Console.WriteLine("Stundet passed");
+        }
+        else
+        {
+            Console.WriteLine("Stundet failed");
+        }
+
     }
 }
