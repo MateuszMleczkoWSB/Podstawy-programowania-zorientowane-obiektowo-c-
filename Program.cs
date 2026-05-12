@@ -7,10 +7,33 @@ class Program
     static void Main(string[] args)
     {
         Console.OutputEncoding = System.Text.Encoding.UTF8;
-        //Calc();
-        //TempConverter();
-        GradesAverage();
+
+        while (true)
+        {
+            Console.WriteLine("Select program (1: Simple two-number calculator; 2: Temperature converter (Celsius --> Fahrenheit); 3: Student's grades average 4: End program): ");
+            int program = int.Parse(Console.ReadLine());
+
+            switch (program)
+            {
+                case 1:
+                    Calc();
+                    break;
+                case 2:
+                    TempConverter();
+                    break;
+                case 3:
+                    GradesAverage();
+                    break;
+                case 4:
+                    Console.WriteLine("End the program...");
+                    return;
+                default:
+                    Console.WriteLine("Select option 1-3");
+                    break;
+            }
+        }
     }
+
     /// Simple two-number calculator
     static void Calc()
     {
@@ -58,6 +81,7 @@ class Program
         }
     }
 
+    ///  Temperature converter (Celsius --> Fahrenheit)
     static void TempConverter()
     {
         Console.WriteLine("Temperature converter (Celsius --> Fahrenheit)");
@@ -90,6 +114,7 @@ class Program
         }
     }
 
+    /// Student's grades average
     static void GradesAverage()
     {
         Console.WriteLine("Student's grades average");
