@@ -1,11 +1,14 @@
 ﻿using System;
+using System.Diagnostics.Metrics;
 /// Exercise 1: reminder of the basics of programming
 
 class Program
 {
     static void Main(string[] args)
     {
-        Calc();
+        Console.OutputEncoding = System.Text.Encoding.UTF8;
+        //Calc();
+        TempConverter();
     }
     /// Simple two-number calculator
     static void Calc()
@@ -51,35 +54,37 @@ class Program
                 Calc();
                 break;
         }
+    }
 
-        //if (operation == "+")
-        //{
-        //    Console.WriteLine($"Result: {num1 + num2}\n");
-        //}
-        //else if (operation == "-")
-        //{
-        //    Console.WriteLine($"Result: {num1 - num2}\n");
-        //}
-        //else if (operation == "*")
-        //{
-        //    Console.WriteLine($"Result: {num1 * num2}\n");
-        //}
-        //else if (operation == "/")
-        //{
-        //    if (num2 == 0)
-        //    {
-        //        Console.WriteLine("You can't divide by zero\n");
-        //        return;
-        //    }
-        //    else
-        //    {
-        //        Console.WriteLine($"Result: {num1 / num2}\n");
-        //    }
-        //}
-        //else
-        //{
-        //    Console.WriteLine("Wrong operation selected\n");
-        //    Calc();
-        //}
+    static void TempConverter()
+    {
+        Console.WriteLine("Temperature converter (Celsius --> Fahrenheit)");
+
+        Console.Write("Enter operation: ('c' - If you want to convert Celsius to Fahrenheit; 'f' - If you want to convert Fahrenheit to Celsius): ");
+        string operation = Console.ReadLine();
+
+
+        Console.WriteLine("Enter temperature to convert: ");
+        double temp = double.Parse(Console.ReadLine());
+
+        double result;
+
+        switch (operation)
+        {
+            case "c":
+                Console.WriteLine("Celsius --> Fahrenheit");
+                result = (temp * 1.8) + 32;
+                Console.WriteLine($"{temp}℃ = {result}℉");
+                break;
+            case "f":
+                Console.WriteLine("Fahrenheit --> Celsius");
+                result = (temp - 32) / 1.8;
+                Console.WriteLine($"{temp}℉ = {result}℃");
+                break;
+            default:
+                Console.WriteLine("Entered wrong operation (type 'c' or 'f'");
+                TempConverter();
+                break;
+        }
     }
 }
